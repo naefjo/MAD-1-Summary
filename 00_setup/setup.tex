@@ -1,0 +1,134 @@
+\documentclass[a4paper, 8pt]{extarticle}
+\setcounter{page}{0}
+\renewcommand{\baselinestretch}{0.92} %spacing between lines
+
+\usepackage{lipsum} %create dummy text
+
+\usepackage{hyperref}
+
+%algorithms
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\usepackage[landscape]{geometry}
+\geometry{
+     %total={210mm,297mm},
+     left=2mm,
+     right=2mm,
+     top=15mm,
+     bottom=0mm,
+ }
+\usepackage[utf8]{inputenc}
+\usepackage[normalem]{ulem}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\usepackage{mathtools}
+\usepackage[ngerman]{babel}
+
+\usepackage{multicol} %multiple columns
+\usepackage{wrapfig} %wrap text around figures
+
+%get rid of spacing between lists
+\usepackage{enumitem} 
+    \setlist{nolistsep}
+
+%imagepackage
+\usepackage{graphicx} 
+    \graphicspath{ {./images/} }
+
+\usepackage{parskip} %Einzug aus, Absatzabstand ein
+    \tolerance=2000 %Toleranz für Wortzwischenräume
+    \setlength{\emergencystretch}{20pt} %Zusätzliche Zeilendehnbarkeit in Notfällen
+    \setlength\parindent{0pt}
+    \setlength{\columnseprule}{1px} %thickness of column seperator
+
+%New Titles
+\usepackage{tcolorbox}
+    \definecolor{seccol}{RGB}{7, 61, 50}
+    \definecolor{subseccol}{RGB}{29, 120, 116}
+    \definecolor{subsubseccol}{RGB}{103, 146, 137}
+
+\usepackage[explicit]{titlesec}
+
+\titleformat{\section}
+  {\normalfont\bfseries}
+  {}
+  {0em}
+  {\pgfsetfillopacity{1}
+    \colorbox{seccol}{
+        \parbox{\dimexpr\linewidth-4.5\fboxsep\relax}{
+            \textcolor{white}{\thesection\quad#1}}}
+    \pgfsetfillopacity{1}}
+  
+\titleformat{\subsection}
+  {\normalfont\bfseries}
+  {}
+  {0em}
+  {\pgfsetfillopacity{1}
+    \colorbox{subseccol}{
+        \parbox{\dimexpr\linewidth-4.5\fboxsep\relax}{
+            \textcolor{white}{\thesubsection\quad#1:}}}
+    \pgfsetfillopacity{1}}
+
+\titleformat{\subsubsection}
+  {\normalfont\bfseries}
+  {}
+  {0em}
+  {\pgfsetfillopacity{1}
+    \colorbox{subsubseccol}{
+        \parbox{\dimexpr\linewidth-4.5\fboxsep\relax}
+            {\textcolor{white}{\thesubsubsection\quad#1:}}}
+    \pgfsetfillopacity{1}}
+    
+\titlespacing{\section}{0pt}{\parskip}{-0.75\parskip}    
+\titlespacing{\subsection}{0pt}{\parskip}{-0.75\parskip}
+\titlespacing{\subsubsection}{0pt}{\parskip}{-0.75\parskip}
+
+%custom header with title & authors
+\usepackage{fancyhdr} 
+    \pagestyle{fancy}
+    \fancyhf{}
+    \rhead{Joshua Näf, \textit{naefjo@ethz.ch}}
+    \chead{\textbf{\thepage}}
+    \lhead{\textbf{MAD 1 Spring 20 Dr. J. Walther}}
+    \setlength{\headsep}{1mm}
+
+
+%colourful boxes for math mode
+% Syntax: \colorboxed[<color model>]{<color specification>}{<math formula>}
+\usepackage{xcolor}
+\newcommand*{\colorboxed}{}
+\def\colorboxed#1#{%
+  \colorboxedAux{#1}%
+}
+\newcommand*{\colorboxedAux}[3]{%
+  % #1: optional argument for color model
+  % #2: color specification
+  % #3: formula
+  \begingroup
+    \colorlet{cb@saved}{.}%
+    \color#1{#2}%
+    \boxed{%
+      \color{cb@saved}%
+      #3%
+    }%
+  \endgroup
+}    
+
+
+%TODO command    
+\newcommand{\TODO}[1]{\large\textcolor{red}{\textbf{TODO: #1\\}}\normalsize}
+
+% Define new command for varphi
+\newcommand{\p}{\varphi}
+\newcommand{\w}{\textbf{\textit{w}}}
+\newcommand{\y}{\textbf{\textit{y}}}    
+\renewcommand{\Vec}[1]{\textbf{\textit{#1}}}
+    
+    
+\title{MAD 1 Summary}
+\author{Joshua Näf}
+\date{}

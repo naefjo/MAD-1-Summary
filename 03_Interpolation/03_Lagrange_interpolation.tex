@@ -1,0 +1,15 @@
+\subsection{Lagrange Interpolation}
+    We want a base polinomial which satisfies $l_i(x_j) = \delta_{ij}$
+    \begin{equation*}
+        \colorboxed{red}{l_k(x) = \prod_{\substack{i=1 \\ i \neq k}}^N \frac{x-x_i}{x_k-x_i}}\,
+        \colorboxed{red}{\underbrace{f(x)=\sum_{k=1}^N y_k l_k(x)}_{\substack{\textnormal{ Lagrange}\\ \textnormal{Interpolation Function}}}}
+    \end{equation*}
+    
+   
+    
+    \subsubsection{LSQ vs Interpolation}
+        \textbf{Noise:} LSQ better than Interpolation since Interpolation will pass exactly through the points and take noise into account whereas LSQ is robust to noise.
+        
+        \textbf{Data points:} if we have an exact fit and use more data points for the interpolation than the original functions order the higher order trems will cancel out. If $f$ is $2^{nd}$ order we will need 3 data pointso
+        
+        \textbf{Stability:} Hard to approx. local behaviour if interpolation function is used as a global function. Oscillatory behaviour at the endpoints (due to higher order functions). Fluctuations in a small region of the data set may cause fluctuations of the function over the whole domain.

@@ -1,0 +1,21 @@
+\subsection{Backpropagation}
+    \subsubsection{Learninig}
+        We want to minimize error function 
+        \begin{equation*}
+            E_n = \frac{1}{2}|\hat{\y}_n - \y(\Vec{x}_n,\w)|^2 \Rightarrow
+            E(\w) = \sum_{n=1}^N E_n(\w)
+        \end{equation*}
+        With data $\{\Vec{x}_n, \hat{\y}_n\}, \, n = 1,\dots,N$ and $\w = \{W^1,\dots,W^L\}$. We want to find $\w^\star=\arg\min E(\w)$ using gradient descent \Big(stochastic gradient descent: Change $E(\w^{(k)})$ to $E_n(\w^{(k)})$/batchSGD: Change $E(\w^{(k)})$ to $\sum_{n\in\mathcal{I}}E_n(\w^{(k)})$\Big).
+        \begin{equation*}
+            \w^{(k+1)} =\w^{(k)} - \eta\nabla_{\w}E(\w^{(k)})
+        \end{equation*}
+        
+    \subsubsection{Backpropagation}
+        Minimizing $E$ by computing the derivative w.r.t $w_{ji}^\ell$ using chain rule.
+        \begin{equation*}
+            \frac{\partial E_n}{\partial w_{ji}}= \frac{\partial E_n}{\partial a_j}\frac{\partial a_j}{\partial w_{ji}} = \delta_j \Tilde{\Tilde{z}}_i = \p'(a_j)\sum_k \Tilde{w}_{kj}\Tilde{\delta}_k \cdot \Tilde{\Tilde{z}}_i
+        \end{equation*}
+        with the output of the previous node $\Tilde{\Tilde{z}}_i$. Computation of $\delta_j$ depends on $\Tilde{\delta}_k$ (i.e. on the layer on its right. for the last layer $\delta_j = y_j(\Vec{x}_n; \w) - \hat{y}_{nj}$.
+    
+\subsection{Overfitting}
+    A model with $N$ free parameters should be able to fit exactly $N$ data points. However, if the model passes exactly through the points it is unlikely to generalize efficiently since it figth the behaviour of noise. But if too few parameters are used, the model might be forced to ignore menaingful data. \textbf{Bias-Variance Tradeoff}

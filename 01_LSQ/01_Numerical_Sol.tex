@@ -1,0 +1,61 @@
+\subsection{Numerical Solutions}
+    \subsubsection{Condition Number}
+        Numerical solution is affected by round-off error. we define $\delta\w = \w -\Tilde{\w}$ and $\delta\y = \y -\Tilde{\y}$ where $\Tilde{\w},\Tilde{\y}$ are the numerical solutions to LSQ and $A\Tilde{\w} = \Tilde{\y}$.
+        
+        \textit{If $\|\delta\y\|$ is small is $\|\delta\w\|$ small as well?} $\Rightarrow$ No.
+        
+        Condition number:
+        \begin{equation*}
+            \colorboxed{red}{
+                \kappa(A)=\|A\|\|A^{-1}\|
+            } 
+            \qquad \kappa(A)\in[0,\infty)
+        \end{equation*}
+        We call a problem \textit{well defined} if $\kappa(A)$ is not too large. In that case the computed solution will be close to the true solution.
+        
+        Interpretation: \textit{How close a Matrix is to being singular.}
+        
+        Orthogonal Matrices: $\kappa(A)=1$
+        
+        $\|A\|_2 = \sqrt{\rho(A^\top A)}$ where $\rho$ is the largest Eigenvalue
+        
+        $\kappa_2(A^\top A) = \kappa_2(A)^2 \Rightarrow$ bad for LSQ
+        
+    \subsubsection{QR decomposition}
+        $Q\in\mathbb{R}^{N\times N}$ is orthogonal and $Q_1\in\mathbb{R}^{N\times M}$ is a matrix with orthogonal columns and $R_1\in\mathbb{R}^{M \times M}$ is upper triangle and invertible.
+        \begin{equation*}
+            \colorboxed{red}{
+                A =\underbrace{\begin{bmatrix} Q_1 & Q_2 \end{bmatrix}}_Q \underbrace{\begin{bmatrix} R_1 \\ 0 \end{bmatrix}}_R = Q_1 R_1
+            }\,
+            \colorboxed{red}{
+                \w = R_1^{-1}Q_1^\top \y
+            }
+        \end{equation*}
+        Since $R_1$ is upper triangle we do not need to compute its inverse bat can just solve the Linear SoE 
+        \begin{equation*}
+            R_1\w=Q_1^\top\y,\quad 
+            \textnormal{with: }\|R_1\|=\|R_1 Q_1\| = \|A\|
+        \end{equation*}
+        Condition of the matrices involved in the solution is the same as the condition of $A$
+        
+    \subsubsection{Singular Value Decomposition (SVD)}    
+        The SVD of a Matrix $A\in\mathbb{R}^{N\times M}$ with $\textrm{rank}(A) = \rho$ decomposed $A$ as,
+        \begin{equation*}
+            A = \begin{bmatrix} U_r & U_n \end{bmatrix} \begin{bmatrix} S & 0 \\ 0 & 0 \end{bmatrix} \begin{bmatrix}V_r^\top \\ V_n^\top \end{bmatrix} = U\Sigma V^\top
+        \end{equation*}
+        $U\in\mathbb{R}^{N\times N}$ and $V\in\mathbb{R}^{M\times M}$ are orthogonal matrices. $\Sigma\in\mathbb{R}^{N\times M}$ is a diagonal matrix and
+        $S = \textrm{diag}(\sigma_1,\dots,\sigma_\rho)$ where $\sigma_1 \geq \sigma_2 \geq \dots \sigma_\rho \geq 0$ with $\sigma_i$ being the \textit{singular values} of $A$.
+        \begin{equation*}
+            \Sigma^+ = \begin{bmatrix} S^{-1} & 0\\ 0 & 0 \end{bmatrix}
+        \end{equation*}
+        \textit{Moore-Penrose Pesudoinverse:}
+        \begin{gather*}
+            A^+ = (A^\top A)^{-1}A^\top,\quad
+            \colorboxed{red}{
+             A^+ = V\Sigma^+ U^\top
+            }\\
+            \colorboxed{red}{
+                \w^\star = V\Sigma^+ U^\top \y
+            }
+        \end{gather*}
+        $\Rightarrow\Sigma V^\top\w^\star = U^\top\y$ and $\kappa(\Sigma V^\top) = \kappa(A)$

@@ -1,0 +1,35 @@
+\subsection{Principal Component Analysis}
+    Linear transformation onto a subspace explaining the most variance (minimize reconstruction loss). Given dataset $X^\top = (\Vec{x}_1,\dots,\Vec{x}_N)\in\mathbb{R}^{D\times N}$ with $N$ Vectors of $D$ elements $\Vec{x}_n\in\mathbb{R}^D,\, n = 1,2,\dots,N$. %We assume zero mean.
+    %Otherwise, we transfrom data, such that this property is satisfied:
+    % \begin{gather*}
+    %     \Tilde{\Vec{x}}_n = \Vec{x}_n - \bar{\Vec{x}},\quad \bar{\Vec{x}}=\frac{1}{N}\sum_{n=1}^N \Vec{x}_n\\
+    %     C = \frac{1}{N-1}\Tilde{X}^\top\Tilde{X},\, C\in\mathbb{R}^{D\times D} 
+    % \end{gather*}
+    Solving for the first principal component (direction in $\Vec{v}_1^\star\in\mathbb{R}^D$ s.t. variance of projected data is maximized) yields ${\sigma_1^\star}^2 = \lambda_1^\star \rightarrow$ Maximum of objective function correspond to the EigVec of the max EigVal.
+    
+    \textbf{Recipe:}
+    \begin{enumerate}
+        \item Construct centered data matrix
+            \begin{equation*}
+                X^\top\in\mathbb{R}^{D\times N}
+            \end{equation*}
+            
+        \item Construct Covariance Matrix 
+            \begin{equation*}
+                C = \frac{1}{N-1}X^\top X,\ C\in\mathbb{R}^{D\times D}
+            \end{equation*}
+        
+        \item Perform eigenvector decomposition of C.
+        \item Sort EigVec in decr. EigVal order $\lambda_1\geq\lambda_2\geq\dots\geq\lambda_D$ to construct $V_r = (\Vec{v}_1,\dots,\Vec{v}_r)\in\mathbb{R}^{D\times r}$ for the transformation 
+        \begin{equation*}
+        Y_r = V_r^\top X, \quad Y_r \in\mathbb{R}^{r\times N}
+        \end{equation*}
+        
+        \item \Big(Reconstruction: $\Tilde{X} = X V_r V_r^\top$\Big)
+        
+    \end{enumerate}
+    
+    Percentage of retained variance:
+    \begin{equation*}
+        \textnormal{ratio} = \frac{\sum_{i=1}^r \lambda_i}{\sum_{i=1}^D \lambda_i}
+    \end{equation*}

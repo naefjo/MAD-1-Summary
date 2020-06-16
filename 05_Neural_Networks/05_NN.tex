@@ -1,0 +1,25 @@
+Function $\y(\cdot,\w): \mathbb{R}^{n_0}\rightarrow\mathbb{R}^{n_L}$ parametrized by weights $\w$.
+
+\subsection{2-Layer NN}
+    Notation for weights is $w_{ji}^\ell$ with destination node $j$ and source node $i$ in layer level $\ell$. We denote the input of the layer $\ell$ and node $j$ as $a_j^\ell$.
+    Define Matrix $W^\ell$ with $W_{ij}^\ell = w_{ij}^\ell$. Activation function acts elementwise on the vectors.
+    \begin{equation*}
+        \y(\Vec{x};\w) = \p_2\bigg(W^2\p_1\Big(W^1\Vec{x}\Big)\bigg)
+    \end{equation*}
+\subsection{\textit{L}-layer NN}
+    The contents of the previous section can be generalized for an arbitrary amount of intermediate layers.
+     \begin{center}
+            \renewcommand{\arraystretch}{1.3}{\begin{tabular}{l|c}
+                Input $\ell^{th}$ layer & $\displaystyle a_j^\ell = \sum_{i=0}^{n_0} w_{ji}^\ell z_i$\\
+                Output $\ell^{th}$ layer & $\displaystyle z_j^\ell = \p_{\ell}(a_j^\ell)$
+            \end{tabular}}
+    \end{center}
+    \begin{equation*}
+        \y(\Vec{x};\w) = \p_L\Bigg(W^L\p_{L-1}\Big(\dots W^2\p_2\big(W^1\Vec{x}\big)\Big)\Bigg)
+    \end{equation*}
+
+\subsection{Activation Function}
+    Ex: Heaviside Step, ReLU, tanh, logistic (sigmoid),...
+    
+    Introduce nonlinearity into the NN. Otherwise, the output of the NN would solely be a lin. comb of the inputs. Smooth funcitons are preferred since they are differentiable (needed for backporpagation)
+    

@@ -1,0 +1,79 @@
+\subsection{Curse of Dimensionality}
+    Integrating in multiple dimensions leads to a rapid decrease in accuracy with increasing number of dimensions. The quadrature rules in \ref{ss:intrules} become of order $\colorboxed{red}{\mathcal{O}(M^{-s/d})}$ where $s$ is the order over a whole domain in 1 dimension and $d$ corresponds to the dimensionality of the Integration with total number of quadrature points $M$.
+
+\subsection{Probability}
+    Probability that $x\in(a,b)$ in a PDF:
+    \begin{equation*}
+        P(a\leq X \leq b) = \int_a^b p(x)dx
+    \end{equation*}
+    
+    Uniform distribution $\mathcal{U}([a,b])$ and Normal distribution $\mathcal{N}(\mu, \sigma^2)$:
+    \begin{gather*}
+        p_{\mathcal{U}}(x) = 
+        \begin{cases}
+            \frac{1}{b-a} &x\in(a,b)\\
+            0 &\textnormal{otherwise}
+        \end{cases}\\
+        p_{\mathcal{N}} = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left( -\frac{(x-\mu)^2}{2\sigma^2}\right)
+    \end{gather*}
+    
+    Expected value $\mathbb{E}$ over a domain $\Omega$:
+    \begin{gather*}
+        \mathbb{E}[X] = \langle X \rangle = \int_\Omega xp(x)dx \quad (=\mu \textnormal{ mean})\\
+        \mathbb{E}[h(x)] = \int_\Omega h(x)p(x)dx
+    \end{gather*}
+        % $\mathbb{E}[aX+bY] = a\mathbb{E}[X] + b\mathbb{E}[Y]$
+        \\Discrete form: $\mathbb{E}[X] = \Bar{x} = \sum_i x_iP(x_i)$
+    
+    Variance:
+        \begin{equation*}
+            \textnormal{Var}[X] = \sigma^2[X] = \mathbb{E}[X^2]- \mathbb{E}[X]^2
+        \end{equation*}
+    
+    \subsubsection{Inverse Transform Sampling}
+        Solve for u. We can thus sample any distribution from a uniform distribution.
+        \begin{equation*}
+            F(x) = \int_0^x p(x)dx = u
+        \end{equation*}
+    
+    \subsubsection{Rejection Sampling}
+        Generate samples from $p(x)$ from a simple distribution function $h(x)$ from which we already know how to generate samples. $h(x)$ has to bound $p(x)$. $p(x) < \lambda p(x)$
+        \begin{enumerate}
+            \item draw random sample $x$ for $h(x)$
+            \item draw uniform random number $u\in[0,1]$
+            \item accept $x$ if $x < \frac{p(x)}{\lambda h(x)}$, else reject $x$
+        \end{enumerate}
+    
+    \subsubsection{Importance Sampling}
+        ``Bad" fitting $h(x)$ might waste a lot of evaluations. We want to draw samples $x$ from probability $w(x)$ which fits better. We compensate for the bias by nomralizing $p(x)$ by $w(x)$ and thus sample $p(x)/w(x)$.
+        \begin{equation*}
+            \langle f \rangle_p = \int_a^b f(x)\frac{p(x)}{w(x)}w(x)dx \approx \frac{1}{M}\sum_{i=1}^M f(x_i)\frac{p(x_i)}{w(x_i)}
+        \end{equation*}
+        With each $x_i$ being sampled from distribution $w(x)$.
+    
+\subsection{Monte Carlo}
+    \textbf{Recipe:}
+    \begin{enumerate}
+        \item Sample points $\Vec{x}_i$ from a uniform distribution and evalutate inegrand $f$ to get $f(\Vec{x}_i)$.
+        
+        \item Store number of samples, the sum of the values and the sum of squares
+        \begin{equation*}
+            M, \quad \sum_{i=1}^M f(\Vec{x}_i), \quad \sum_{i=1}^M f(\Vec{x}_i)^2
+        \end{equation*}
+\vspace{-2mm}       
+        \item Compute mean as the estimate of the expectation (\textbf{normalized integral})
+        \begin{equation*}
+            \frac{I}{|\Omega|} = \langle f \rangle \approx \langle f \rangle_M = \frac{1}{M}\sum_{i=1}^M f(\Vec{x}_i)
+        \end{equation*}
+\vspace{-2mm}        
+        \item Estimate the variance using the unbiased sample variance:
+        \begin{equation*}
+            \textnormal{Var}[f] \approx \frac{M}{M-1}\left(\frac{1}{M}\sum_{i=1}^M f(\Vec{x}_i)^2-\langle f \rangle_M\right)
+        \end{equation*}
+\vspace{-2mm}       
+        \item estimate error
+        \begin{equation*}
+            \varepsilon_M = \sqrt{\frac{\textnormal{Var}[f]}{M}}
+        \end{equation*}
+    \end{enumerate}
+    
