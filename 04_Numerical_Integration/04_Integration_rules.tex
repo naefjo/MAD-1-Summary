@@ -1,13 +1,11 @@
 \subsection{Integration Rules} \label{ss:intrules}
     \begin{itemize}
-        \item \textbf{Rectangle Rule:} 
+        \item \textbf{Rectangle/Midpoint Rule:} 
             \begin{equation*}
-                \colorboxed{red}{I_{R_i} = f(x_i)\Delta_i}
+                \colorboxed{red}{I_{R_i} = f(x_i)\Delta_i} \
+                \colorboxed{red}{I_{M_i} = f\left(\frac{x_i + x_{i+1}}{2}\right)\Delta_i}
             \end{equation*}
-        \item \textbf{Midpoint Rule:}
-            \begin{equation*}
-                \colorboxed{red}{I_{M_i} = f(x_{i+1/2})\Delta_i = f\left(\frac{x_i + x_{i+1}}{2}\right)\Delta_i}
-            \end{equation*}
+            
         \item \textbf{Trapezoidal Rule:}
             \begin{equation*}
                 \colorboxed{red}{I_{T_i} = \frac{f(x_i) + f(x_{i+1})}{2}\Delta_i}
@@ -19,14 +17,15 @@
     \end{itemize}
     
     \subsubsection{Total Integrals}
-        \textbf{Rectangle Rule:} 
+        \textbf{Rectangle/Midpoint Rule:} 
                 \begin{equation*}
-                    \colorboxed{red}{I \approx \Delta_i \sum_{i=0}^{N-1}f(x_i)}
+                    \colorboxed{red}{I \approx \Delta_i \sum_{i=0}^{N-1}f(x_i)} \
+                    \colorboxed{red}{I \approx \Delta_i \sum_{i=0}^{N-1}f\left(\frac{x_i + x_{i+1}}{2}\right)}
                 \end{equation*}
-        \textbf{Midpoint Rule:} 
-            \begin{equation*}
-                \colorboxed{red}{I \approx \Delta_i \sum_{i=0}^{N-1}f\left(\frac{x_i + x_{i+1}}{2}\right)}
-            \end{equation*}
+        % \textbf{Midpoint Rule:} 
+        %     \begin{equation*}
+        %         \colorboxed{red}{I \approx \Delta_i \sum_{i=0}^{N-1}f\left(\frac{x_i + x_{i+1}}{2}\right)}
+        %     \end{equation*}
         \textbf{Trapezoidal Rule:} 
             \begin{equation*}
                 \colorboxed{red}{I \approx \frac{\Delta_i}{2}\left(f(x_0) + 2\sum_{i=1}^{N-1} f(x_i) + f(x_N)\right)}

@@ -7,10 +7,12 @@
     \subsubsection{Newtons Method/Update Rule}
     $F(\Vec{x}) = \nabla E(\Vec{x}) \overset{!}{=} 0\rightarrow$minimization problem to a root finding problem.
     \begin{gather*}
-        J(\Vec{x}) = \nabla^2E(\Vec{x})\\
+        J(\Vec{x}) = \nabla^2E(\Vec{x}) \
         \colorboxed{red}{
-        \nabla^2E(\Vec{x}_k)\Vec{z} = -\nabla E(\Vec{x}_k)
-        }\\
-        \Vec{x}_{k+1} = \Vec{x}_k + \Vec{z}
+        \begin{aligned}
+            \nabla^2E(\Vec{x}_k)\Vec{z} &= -\nabla E(\Vec{x}_k)\\
+            \Vec{x}_{k+1} &= \Vec{x}_k + \Vec{z}
+        \end{aligned}
+        }
     \end{gather*}
     

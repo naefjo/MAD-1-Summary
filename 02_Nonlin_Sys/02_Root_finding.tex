@@ -67,13 +67,8 @@
 \subsection{Newtons Method}
     Function $f$ continuous and differentiable at $x^\star$.
     \begin{equation*}
-        \colorboxed{red}{x_{k+1} = x_k - \frac{f(x_k)}{f'(x_k)}}
+        \colorboxed{red}{x_{k+1} = x_k - \frac{f(x_k)}{f'(x_k)}} \ \underbrace{x_{k+1} = x_k - m\frac{f(x_k)}{f'(x_k)}}_{\textnormal{roots with multiplicity }m>1}
     \end{equation*}
-    Order of convergence: 2 $\rightarrow$ Algorithm converges quadratically. \textbf{Root with multiplicity $m>1$ convergence only 1} unless we modify the itration to 
-    \begin{equation*}
-        x_{k+1} = x_k - m\frac{f(x_k)}{f'(x_k)}
-    \end{equation*}
-    
     \textbf{Advantages:}
     \begin{itemize}
         \item Quadratic convergence
@@ -86,6 +81,8 @@
     
     \textbf{Disadvantages:}
     \begin{itemize}
+        \item Small changes in IV may change root
+        \item\textbf{Root with multiplicity $m>1$ convergence rate only linear}
         \item Not guaranteed to converge
         \item if $f'(x_k)=0$ for some $k$ we cannot proceed
         \item requires evaluation of both $f(x_k)$ and $f'(x_k)$
