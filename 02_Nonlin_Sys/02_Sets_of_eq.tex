@@ -1,5 +1,5 @@
 \section{Sets of equations}
-    General systems of $N$ non-linear functions $f_i(\Vec{x})$, $i=1,\dots,N$, where $\Vec{x}= (x_1, \dots, x_M)^\top$ is a vector of $M$ unknowns. Find $\Vec{x}^\star$, st. $\colorboxed{red}{f_i(\Vec{x}^\star) = 0 \quad i = 1,\dots,M}$
+    General systems of $N$ non-linear functions $f_i(\Vec{x})$, $i=1,\dots,N$, where $\Vec{x}= (x_1, \dots, x_M)^\top$ is a vector of $M$ unknowns. Find $\Vec{x}^\star$, st. $f_i(\Vec{x}^\star) = 0 \quad i = 1,\dots,M$
     
     We define the \textit{Jacobian Matrix} $J(\Vec{x})$ with elements $J_{ij}(\Vec{x}) = \frac{\partial f_i(\Vec{x})}{\partial x_j}$
     \begin{equation*}
@@ -22,11 +22,25 @@
         J(\Vec{x}_k)(\Vec{x}_{k+1} - \Vec{x}_k) = -F(\Vec{x}_k)
     \end{gather*}
     
-    \textbf{Netwon-Raphson Method (\textit{N}=\textit{M}):}
+    \textbf{Netwon-Raphson Method (\textit{N} = \textit{M}):}
     \begin{equation*}
-        \colorboxed{red}{\Vec{x}_{k+1} = \Vec{x}_k - J^{-1}(\Vec{x}_k)F(\Vec{x}_k)}
+        \colorboxed{red}{\Vec{x}_{k+1} = \Vec{x}_k - J^{-1}(\Vec{x}_k)F(\Vec{x}_k)} \ 
+        \colorboxed{red}{
+    \begin{aligned}
+    J(\Vec{x}_k)\Vec{z} &= -F(\Vec{x}_k)\\
+    \Vec{x}_{k+1} &= \Vec{x}_k + \Vec{z}
+    \end{aligned}
+    }
     \end{equation*}
-    We do not invert $J(\Vec{x}_k)$ but solve $J(\Vec{x}_k)\Vec{z} = -F(\Vec{x}_k)$ for $\Vec{z}$ and update $\Vec{x}_{k+1} = \Vec{x}_k + \Vec{z}$
+    % We do not invert $J(\Vec{x}_k)$ but solve \begin{equation*}
+    % \colorboxed{red}{
+    % \begin{aligned}
+    % J(\Vec{x}_k)\Vec{z} &= -F(\Vec{x}_k)\\
+    % \Vec{x}_{k+1} &= \Vec{x}_k + \Vec{z}
+    % \end{aligned}
+    % }
+    % \end{equation*}
+    % J(\Vec{x}_k)\Vec{z} = -F(\Vec{x}_k)\Vec{x}_{k+1} = \Vec{x}_k + \Vec{z}
     
     Provided that the Jacobian is not singular the convergence rate is quadratic.
     

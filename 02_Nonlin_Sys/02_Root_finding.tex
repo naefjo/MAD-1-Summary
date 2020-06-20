@@ -2,7 +2,10 @@
     Every nonlinear equation $g(x) = h(x)$ can be written as $g(x) - h(x) = f(x) = 0$ $\Rightarrow$ We transform the problem into a root finding problem for $f(x)$: find $x^\star$ s.t.
     \begin{equation*}
         \colorboxed{red}{
-            f(x^\star) = 0
+        \begin{aligned}
+            f(x^\star) &= 0\\
+            e_k = x_k -x^\star &\ \big(\approx x_k -x_{k-1}\big)
+        \end{aligned}
         }
     \end{equation*}
     There is no general formula to find a root of a nonlinear function $\rightarrow$ iterative methods that, from an initial guess $x_0$, produce a sequence $x_0, x_1, \dots, x_k$ that converges to $x^\star$ for $k\to\infty$.
@@ -36,7 +39,6 @@
                 \item $r=1$: if $C\in(0,1)$ linear convergence. If $C = 0$ superlinear, $C = 1$ sublinear
                 \item $r=2$: quadratic convergence
             \end{itemize}{}
-            \TODO{example?}
 
 \subsection{Bisection Method}
     \begin{center}
@@ -96,7 +98,7 @@
     \begin{equation*}
         \colorboxed{red}{x_{k+1} = x_k - f(x_k)\frac{x_k-x_{k-1}}{f(x_k)-f(x_{k-1})}}
     \end{equation*}
-    Order of convergence: $\varphi = \frac{1+\sqrt{5}}{2} \approx 1.618$ (for simple roots).
+    Order of convergence: $\varphi = \frac{1+\sqrt{5}}{2} \approx 1.618$ (simple roots).
     
     \textbf{Advantages:}
     \begin{itemize}
@@ -112,6 +114,6 @@
 \subsection{Numerical Computation of the Order of Convergence}
     Compute the error $e_k = x_k-x^\star \, \forall k$ for a function with known root $x^\star$. Then, evaluate the convergence rate $r_k$ as a sequence which will converge to the theoretical $r$.
     \begin{equation*}
-        \colorboxed{red}{r \approx \frac{\log\left|\frac{e_{k+2}}{e_{k+1}}\right|}{\log\left|\frac{e_{k+1}}{e_{k}}\right|}}
+        \colorboxed{red}{r \approx \frac{\log\left|\frac{e_{k+2}}{e_{k+1}}\right|}{\log\left|\frac{e_{k+1}}{e_{k}}\right|}} \ \textnormal{log base 10}
     \end{equation*}
 

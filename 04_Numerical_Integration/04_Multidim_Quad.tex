@@ -1,0 +1,8 @@
+\subsection{Quadrature in multiple dimensions}
+    \textbf{Goal:} Integrate $f:\mathbb{R}^d\to\mathbb{R}$ over a multi-dimensional domain $\Omega = \Omega_1\times\dots\Omega_d$ i.e. $ I = \int_\Omega fd\vec{x}$
+    \begin{align*}
+         I \overset{\substack{\textnormal{Fubinis}\\\textnormal{theorem}}}{=}&\int_{\Omega}\dots\int_{\Omega_d}f(x^{(1)},\dots,x^{(d)})dx^{(d)}\dots dx^{(1)}\\
+         \approx &\sum_{i_1=1}^{N_1}\dots\sum_{i_d=1}^{N_d} \underbrace{w_{i_1}\dots w_{i_N}}_{= \underline{\underline{W}}_{i_1,\dots,i_d}} f(x_{i_1},\dots, x_{i_D})
+    \end{align*}
+    The weights of the quadrature can be expressed as an $N_1\times\dots\times N_d$  matrix. For the two dimensional case this matrix is formed by a cartesian product $\underline{\underline{W}} = \Vec{w}\Vec{w}^\top$m where $\Vec{w}$ is the $N\times 1$ dimensional weight vector as specififed by section \ref{sssec:totalint}
+    

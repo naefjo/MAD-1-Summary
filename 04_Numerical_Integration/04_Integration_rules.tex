@@ -16,7 +16,7 @@
             \end{equation*}
     \end{itemize}
     
-    \subsubsection{Total Integrals}
+    \subsubsection{Total Integrals}\label{sssec:totalint}
         \textbf{Rectangle/Midpoint Rule:} 
                 \begin{equation*}
                     \colorboxed{red}{I \approx \Delta_i \sum_{i=0}^{N-1}f(x_i)} \
@@ -38,7 +38,7 @@
 \subsection{Newton-Cotes Formulas}
     General way to derive quadrature rules. We use $M+1$ equidistant points in $[x_i, x_{i+1}]$ $(x_k = x_i +k\cdot h, k =0,\dots, M)$ and Lagrange interpolation. The lagrange interpolant trought $(x_k, f(x_k))$ is given by
     \begin{gather*}
-        \colorboxed{red}{I_i \approx \Delta_i\sum_{k=0}^M C_k^M f(x_k)}\,
+        \colorboxed{red}{I_i \approx \Delta_i\sum_{k=0}^M C_k^M f(x_k)}\
         \colorboxed{red}{C_k^M = \frac{1}{\Delta_i}\int_{x_i}^{x_{i+1}}l_k^M(x)dx}\\
         l_k^M(x) = \prod_{\substack{i=0 \\ i \neq k}}^M \frac{(x - x_i)}{(x_k - x_i)}
     \end{gather*}

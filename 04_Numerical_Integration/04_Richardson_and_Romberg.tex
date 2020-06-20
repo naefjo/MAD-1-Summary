@@ -12,11 +12,10 @@
     \begin{equation*}
         G_1(h) = 2G(h/2) - G(h) = G + c_2' h^2 + c_3' h^3 + \dots
     \end{equation*}
-    Leading error term order $h^2 \Rightarrow G_1(h)$ much more accurate than $G(h)$ or $G(h/2)$ for $h\rightarrow 0$ with little added cost. This can be repeated leading to 
+    Leading error term order $h^2 \Rightarrow G_1(h)$ much more accurate than $G(h)$ or $G(h/2)$ for $h\rightarrow 0$ with little added cost. This can be repeated. We can see that $G_n(h) = G + O(h^{n+1})$.
     \begin{equation*}
         \colorboxed{red}{G_n(h) = \frac{1}{2^{n}-1}(2^n G_{n-1}(h/2)-G_{n-1}(h))}
     \end{equation*}
-    Thus $G_n(h) = G + O(h^{n+1})$.
     
     \subsubsection{Error estimation}
         \begin{equation*}
