@@ -1,11 +1,11 @@
 \subsection{Lagrange Interpolation}
     We want a base polynomial which satisfies $l_i(x_j) = \delta_{ij}$. Create a function of order $N-1$ which perfectly fits $N$ data points.
     \begin{equation*}
-        \underbrace{\colorboxed{red}{l_k(x) = \prod_{\substack{i=1 \\ i \neq k}}^N \frac{x-x_i}{x_k-x_i}
+        \underbrace{\colorboxed{red}{\ell_k(x) = \prod_{\substack{i=1 \\ i \neq k}}^N \frac{x-x_i}{x_k-x_i}
         }}_{\textnormal{Lagrange Functions}}
         \,
         \underbrace{\colorboxed{red}{
-        f(x)=\sum_{k=1}^N y_k l_k(x)
+        f(x)=\sum_{k=1}^N y_k \ell_k(x)
         }}_{\textnormal{Lagrange Interpolator}}
     \end{equation*}
     
