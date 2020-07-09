@@ -33,18 +33,14 @@
             \end{equation*}
 
 \subsection{Newton-Cotes Formulas}
-    General way to derive quadrature rules. We use $M+1$ equidistant points in $[x_i, x_{i+1}]$ $(x_k = x_i +k\cdot h, k =0,\dots, M)$ and Lagrange interpolation. The lagrange interpolant trought $(x_k, f(x_k))$ is given by
+    Use $M+1$ equidistant points in $[x_i, x_{i+1}]$ $(x_k = x_i +k\cdot h, k =0,\dots, M)$ and Lagrange interpolation. The lagrange interpolant trought $(x_k, f(x_k))$ is given by
     \begin{gather*}
         \colorboxed{red}{I_i \approx \Delta_i\sum_{k=0}^M C_k^M f(x_k)}\
         \colorboxed{red}{C_k^M = \frac{1}{\Delta_i}\int_{x_i}^{x_{i+1}}l_k^M(x)dx}\\
         l_k^M(x) = \prod_{\substack{i=0 \\ i \neq k}}^M \frac{(x - x_i)}{(x_k - x_i)}
     \end{gather*}
     
-    \textbf{Properties of $C_k^M$:}
-        \begin{itemize}
-            \item $\sum_{k=0}{M} C_k^M= 1$
-            \item $C_k^M = C_{M-k}^{M}$
-        \end{itemize}
+    \textbf{Properties of $C_k^M$:} $\sum_{k=0}{M} C_k^M= 1$; $C_k^M = C_{M-k}^{M}$
 
 \subsection{Error Analysis}
     Find an upper bound for our error $E_{\textrm{rule},i} = I_i - I_{\textrm{rule},i}$
@@ -53,7 +49,7 @@
         \begin{equation*}
             \colorboxed{red}{E_{M_i} = \frac{1}{24}f''(x_{i+1/2})\Delta_i^3+ O(\Delta_i^5) + \dots}
         \end{equation*}
-       One interval midpoint rule is \textbf{third order accurate}.
+       One interval midpoint rule is \textbf{third order accurate}. (Rectangle is only $2^{nd}$ order accurate)
         
     \textbf{Trapezoidal Rule:} 
         \begin{equation*}

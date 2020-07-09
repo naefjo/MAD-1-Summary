@@ -38,16 +38,16 @@
         \end{equation*}
         Condition of the matrices involved in the solution is the same as the condition of $A$
         
-    \subsubsection{Singular Value Decomposition (SVD)}    
+    \subsubsection{Singular Value Decomp (SVD)}    
         The SVD of a Matrix $A\in\mathbb{R}^{N\times M}$ with $\textrm{rank}(A) = \rho$ decomposed $A$ as,
         \begin{equation*}
             A = \begin{bmatrix} U_r & U_n \end{bmatrix} \begin{bmatrix} S & 0 \\ 0 & 0 \end{bmatrix} \begin{bmatrix}V_r^\top \\ V_n^\top \end{bmatrix} = U\Sigma V^\top
         \end{equation*}
         $U\in\mathbb{R}^{N\times N}$ and $V\in\mathbb{R}^{M\times M}$ are orthogonal matrices. $\Sigma\in\mathbb{R}^{N\times M}$ is a diagonal matrix and
-        $S = \textrm{diag}(\sigma_1,\dots,\sigma_\rho)$ where $\sigma_1 \geq \sigma_2 \geq \dots \sigma_\rho \geq 0$ with $\sigma_i$ being the \textit{singular values} of $A$.
-        \begin{equation*}
-            \Sigma^+ = \begin{bmatrix} S^{-1} & 0\\ 0 & 0 \end{bmatrix}
-        \end{equation*}
+        $S = \textrm{diag}(\sigma_1,\dots,\sigma_\rho)$ where $\sigma_1 \geq \sigma_2 \geq \dots \sigma_\rho \geq 0$ with $\sigma_i$ being the \textit{singular values} of $A$. $\Sigma^+ = \operatorname{diag}(S^{-1}, 0)$.
+        % \begin{equation*}
+        %     \Sigma^+ = \begin{bmatrix} S^{-1} & 0\\ 0 & 0 \end{bmatrix}
+        % \end{equation*}
         \textit{Moore-Penrose Pesudoinverse:}
         \begin{gather*}
             A^+ = (A^\top A)^{-1}A^\top,\quad

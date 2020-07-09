@@ -1,6 +1,5 @@
-\subsection{Parametric Function Fitting}
-    For $A \in\mathbb{R}^{N \times M}$: \textit{Null Space} or \textit{Kernel} = subspace of all vectors $\mathbf{x}\in\mathbb{R}^N$ s.t. $A\mathbf{x}=0$. It is denoted by null($A$). \textit{Left Null Space} or \textit{Cokernel}: null($A^\top$). \textit{Column Space} or \textit{Range} or \textit{Image} of $A$ is the space spanned by the columns of A and is denoted by range($A$). \textit{Row Space} or \textit{Coimage} of $A$: range($A^\top$).
-    
+% \subsection{Parametric Function Fitting}
+    % For $A \in\mathbb{R}^{N \times M}$: \textit{Null Space}/\textit{Kernel}: $A\mathbf{x}=0$ (null($A$)). \textit{Left Null Space} or \textit{Cokernel}: null($A^\top$). \textit{Column Space}/\textit{Range}/\textit{Image}: range($A$). \textit{Row Space} or \textit{Coimage}: range($A^\top$).
     We want to minimize error:
     \begin{equation*}
         \|\mathbf{e}\|_2=\sqrt{\sum_{i=1}^N e_i^2}=\sqrt{\sum_{i=1}^N (y_i-f(x_i))^2}
@@ -109,9 +108,7 @@
             A^\top = A^{-1}; \qquad \|A\mathbf{u}\| = \|\mathbf{u}\|
         \end{equation*}
         LSQ simplifies to:
-        \begin{equation*}
-            \textbf{\textit{w}}^\star = A^\top\textbf{\textit{y}}
-        \end{equation*}
+            $\textbf{\textit{w}}^\star = A^\top\textbf{\textit{y}}$
         % \TODO{example?}
         
     \subsection{Geometric Interpretation}
@@ -126,17 +123,17 @@
         
         $A\w = \y$ has a solution iff $\y\in$ range $A$ $\Rightarrow \mathbf{e} = 0$
         \subsubsection{Projection Matrix P}
-            closest point to $\y$ is $\Vec{p} = A\w^\star = P\Vec{y}$
+            closest point to $\y$ is $\Vec{p} = A\w^\star = P\Vec{y}$ (P is a projection Matrix with $P = P^\top$ (symmetric), $P^2 = P$ (idemptotent)).
             \begin{equation*}
                 \colorboxed{red}{
                     P = A(A^\top A)^{-1}A^\top
                 }
             \end{equation*}
-            P is called a \textit{projection matrix} and has the following properties:
-            \begin{equation*}
-                P = P^\top \textrm{ (symmetric)}; \quad P^2 = P \textrm{ (idemptotent)}
-            \end{equation*}
-            
+            % P is called a \textit{projection matrix} and has the following properties:
+            % \begin{equation*}
+            %     P = P^\top \textrm{ (symmetric)}; \quad P^2 = P \textrm{ (idemptotent)}
+            % \end{equation*}
+            % 
             We can write the error as $\Vec{e} = \y - A\w^\star =\y -P\y = M\y$
             \begin{equation*}
                 M = \mathbb{I} - A(A^\top A)^{-1}A^\top

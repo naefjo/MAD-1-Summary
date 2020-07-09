@@ -12,8 +12,10 @@
    
     
     \subsubsection{LSQ vs Interpolation}
-        \textbf{Noise:} LSQ better than Interpolation since Interpolation will pass exactly through the points and take noise into account whereas LSQ is robust to noise. \textbf{Note} that the lagrange function is dependant ond $x_i$ only.
+        \textbf{Noise:} LSQ robust to noise. Interpolation passes exactly through $(x_i,y_i)\forall i$.
+        \textbf{Note:} Lagrange function is dependant ond $x_i$ only.
         
-        \textbf{Data points:} Terms of higher order than order of data will cancel out in the lagrange interpolator. I.e. if data linear but 5 data points, lagrange will still be linear. \textbf{LSQ also robust to few data points.}
+        \textbf{Data points:} Terms of higher order than order of data cancel out in the Lagrange interpolator. I.e. if data linear but 5 data points, lagrange will still be linear. \textbf{LSQ also robust to few data points.}
         
-        \textbf{Stability:} Hard to approx. local behaviour if interpolator is used as a global function. Oscillatory behaviour at the endpoints (due to higher order). Fluctuations in a small region of the data set may cause fluctuations of the function over the whole domain.
+        \textbf{Stability:} Hard to approx. loc. behaviour if interpolator used as global function. Oscillatory behaviour at the endpoints (higher order). Fluctuations in one region may affect the function over the whole domain.
+        % LSQ better than Interpolation since Interpolation will pass exactly through the points and take noise into account whereas LSQ is robust to noise. 

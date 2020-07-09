@@ -1,5 +1,5 @@
 \subsection{Root Finding Problem}
-    Every nonlinear equation $g(x) = h(x)$ can be written as $g(x) - h(x) = f(x) = 0$ $\Rightarrow$ We transform the problem into a root finding problem for $f(x)$: find $x^\star$ s.t.
+    Rewrite nonlin eq. $g(x) = h(x)$ as $g(x) - h(x) := f(x) = 0$ $\Rightarrow$ Transform eq. into root finding problem for $f(x)$:
     \begin{equation*}
         \colorboxed{red}{
         \begin{aligned}
@@ -8,7 +8,7 @@
         \end{aligned}
         }
     \end{equation*}
-    There is no general formula to find a root of a nonlinear function $\rightarrow$ iterative methods that, from an initial guess $x_0$, produce a sequence $x_0, x_1, \dots, x_k$ that converges to $x^\star$ for $k\to\infty$.
+    $\nexists$ General formula to find root of nonlinear function $\rightarrow$ Iterative methods which converge $x_0 \xrightarrow{h\to\infty}x^\star$. %that, from an initial guess $x_0$, produce a sequence $x_0, x_1, \dots, x_k$ that converges to $x^\star$ for $k\to\infty$.
     
     % \subsubsection{Existence of a root}
     %     \begin{itemize}
@@ -17,8 +17,8 @@
     %     \end{itemize}
         
     \subsubsection{Sensitivity and Conditioning}
-        \textit{If $|f(\Tilde{x})|\approx 0$ does this mean that $|\Tilde{x}-x^\star|\approx0$?}
-        We call a system ($f$) \textbf{well-conditioned} when a small change in input causes a small change in the output. \textbf{Ill-conditioned} if small change in input causes a large change in output.
+        \textit{If $|f(\Tilde{x})|\approx 0$ then $|\Tilde{x}-x^\star|\approx0$?}.
+        System ($f$) is \textbf{well-conditioned} when a small change in input causes a small change in the output. \textbf{Ill-conditioned} if small change in input causes a large change in output.
         
         Condition number of root finding problem:
         \begin{equation*}
@@ -30,23 +30,20 @@
         If $f'(x)=0$ the problem is ill-conditioned. This is the case for roots with \textbf{multiplicity m} $> 1$.
         
         \subsubsection{Order of Convergence}
-            We want the sequence $\{x_k\}_{K=0}^{\infty}$ to converge to $x^\star$ as quick as possible. In order to quantify "\textit{fast}" we define the order of convergende as
+            Sequence $\{x_k\}_{K=0}^{\infty}$ should converge to $x^\star$ asap. To quantify "\textit{fast}" we define the \textbf{order of convergende} $r$ and \textbf{rate of Convergence} $C$ as:
             \begin{equation*}
                 \lim_{k\to\infty}\frac{|e_{k+1}|}{|e_k|^r}= C
             \end{equation*}
-            \textbf{order of convergence} $r$ and \textbf{rate of convergence} $C$
+            % \textbf{order of convergence} $r$ and \textbf{rate of convergence} $C$
             \begin{itemize}
                 \item $r=1$: if $C\in(0,1)$ linear convergence. If $C = 0$ superlinear, $C = 1$ sublinear
                 \item $r=2$: quadratic convergence
             \end{itemize}{}
 
 \subsection{Bisection Method}
-    \begin{center}
-        \includegraphics[width=0.9\linewidth, height = 50mm]{images/02/bisection.jpg}
-    \end{center}
     Order of convergence: 1 and rate of convergence. $1/2$
     
-    Require number of iterations $k$ to achieve tequired tolerance tol.
+    Number of iterations $k$ to achieve required tolerance:
     \begin{equation*}
         |e_k| = \textrm{tol} \Rightarrow \frac{b-a}{2^k}=\textrm{tol} \Rightarrow k = \log_2\left(\frac{b-a}{\textrm{tol}}\right)
     \end{equation*}
@@ -54,7 +51,7 @@
     \begin{itemize}
         \item Certain to converge
         \item Only requires signs and not function values
-        \item $f$ does not need to be differentiable only continuous
+        \item $f$ does not need to be diff'able only continuous
     \end{itemize}
     
     \textbf{Disadvantages:}
@@ -63,6 +60,9 @@
         \item Initial interval needs to be known beforehand
         \item Cant be easily generalized to higher dimensions
     \end{itemize}
+    \begin{center}
+        \includegraphics[width=0.9\linewidth, height = 50mm]{images/02/bisection.jpg}
+    \end{center}
 
 
 
@@ -98,7 +98,7 @@
     \begin{equation*}
         \colorboxed{red}{x_{k+1} = x_k - f(x_k)\frac{x_k-x_{k-1}}{f(x_k)-f(x_{k-1})}}
     \end{equation*}
-    Order of convergence: $\varphi = \frac{1+\sqrt{5}}{2} \approx 1.618$ (simple roots).
+    $r$: $\varphi = \frac{1+\sqrt{5}}{2} \approx 1.618$ (simple roots).
     
     \textbf{Advantages:}
     \begin{itemize}

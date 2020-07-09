@@ -23,11 +23,11 @@
         \mathbb{E}[h(x)] = \int_\Omega h(x)p(x)dx
     \end{gather*}
         % $\mathbb{E}[aX+bY] = a\mathbb{E}[X] + b\mathbb{E}[Y]$
-        \\Discrete form: $\mathbb{E}[X] = \Bar{x} = \sum_i x_iP(x_i)$
+        \\Discrete form: $\mathbb{E}[X] = \Bar{x} = \sum_i x_iP(x_i) $
     
     Variance:
         \begin{equation*}
-            \textnormal{Var}[X] = \sigma^2[X] = \mathbb{E}[X^2]- \mathbb{E}[X]^2
+            \textnormal{Var}[X] = \sigma^2[X] = \mathbb{E}[X^2]- \mathbb{E}[X]^2 = \frac{1}{n}\sum_{i=1}^n\big(x_i-\mu\big)^2
         \end{equation*}
     
     \subsubsection{Inverse Transform Sampling}
@@ -68,12 +68,12 @@
 \vspace{-2mm}        
         \item Estimate the variance using the unbiased sample variance:
         \begin{equation*}
-            \textnormal{Var}[f] \approx \frac{M}{M-1}\left(\frac{1}{M}\sum_{i=1}^M f(\Vec{x}_i)^2-\langle f \rangle_M\right)
+            \textnormal{Var}[f] \approx \frac{M}{M-1}\left(\frac{1}{M}\sum_{i=1}^M f(\Vec{x}_i)^2-\langle f \rangle_M^2\right)
         \end{equation*}
 \vspace{-2mm}       
         \item Estimate error
         \begin{equation*}
-            \varepsilon_M = \sqrt{\frac{\textnormal{Var}[f]}{M}}
+            \varepsilon_M = \sqrt{\frac{\textnormal{Var}[f]}{M}} \propto \mathcal{O}\big(M^{-1/2}\big)
         \end{equation*}
     \end{enumerate}
     
