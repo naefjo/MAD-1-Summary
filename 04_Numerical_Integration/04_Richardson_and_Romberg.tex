@@ -35,7 +35,7 @@
     % Evaluate the integral with half the grid size $h_1 = h/2$
     % \begin{equation*}
         I_0^{2n} = I -c_1\frac{h^2}{4} - c_2\frac{h^4}{16} - c_3 \frac{h^6}{64} \\
-        \colorboxed{red}{I_k^n = \frac{4^k I_{k-1}^{2n} - I_{k-1}^n}{4^k - 1}}
+        \underbrace{\colorboxed{red}{I_k^n = \frac{4^k I_{k-1}^{2n} - I_{k-1}^n}{4^k - 1}}}_{(\textnormal{simpson: }4^k \to 4^{k+1})}
     \end{gather*}
     % % \end{equation*}
     % eliminating $O(h^2)$ yields
