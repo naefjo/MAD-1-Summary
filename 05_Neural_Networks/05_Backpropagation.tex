@@ -1,5 +1,5 @@
 \subsection{Backpropagation}
-    \subsubsection{Learninig}
+    \subsubsection{Learning}
         We want to minimize error function 
         \begin{equation*}
             E_n = \frac{1}{2}|\hat{\y}_n - \y(\Vec{x}_n,\w)|^2 \Rightarrow
@@ -18,4 +18,4 @@
         with the output of the previous node $\Tilde{\Tilde{z}}_i$. Computation of $\delta_j$ depends on $\Tilde{\delta}_k$ (i.e. on the layer on its right. for the last layer $\delta_j = y_j(\Vec{x}_n; \w) - \hat{y}_{nj}$.
     
 \subsection{Overfitting}
-    A model with $N$ free parameters should be able to fit exactly $N$ data points. However, if the model passes exactly through the points it is unlikely to generalize efficiently since it figth the behaviour of noise. But if too few parameters are used, the model might be forced to ignore menaingful data. \textbf{Bias-Variance Tradeoff}
+    A model with $N$ free parameters should be able to fit exactly $N$ data points. However, if the model passes exactly through the points it is unlikely to generalize efficiently since it fits the behaviour of noise. But if too few parameters are used, the model might be forced to ignore meaningful data. \textbf{Bias-Variance Trade-off}

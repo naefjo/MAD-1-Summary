@@ -1,5 +1,5 @@
 \subsection{Adaptive Quadrature}
-    Romberg may achieve arbitrary accuracy but is not very efficient (function evaluations). Irregular function may waste evaluatins in flat regions.
+    Romberg may achieve arbitrary accuracy but is not very efficient (function evaluations). Irregular function may waste evaluations in flat regions.
     
     \begin{center}
         \includegraphics[width = \linewidth]{images/04/adaptive_quad.pdf}
@@ -9,7 +9,7 @@
    We adapt the weights and abscissas of our quadrature rule to obtain better accuracy.
     
     \subsubsection{Two-Point Gauss Quadrature}
-        The two point gauss quadrature rule approximates $I$ using
+        The two point Gauss quadrature rule approximates $I$ using
         \begin{equation*}
             I = \int_a^b f(x)dx \approx c_1 f(x_1) + c_2 f(x_2)
         \end{equation*}
@@ -48,8 +48,8 @@
                 }
             \end{equation*}
         \end{itemize}
-        Gauss Quadrature gives the best accuracy, in the sense of correctly integrating polynomials of highest possible order for a given number of function evaluations. The Abscissas vary from order to order resulting in new evaluations of the abscissas from scratch if the accuracy of the Quadrture is to be imporved.
+        Gauss Quadrature gives the best accuracy, in the sense of correctly integrating polynomials of highest possible order for a given number of function evaluations. The Abscissas vary from order to order resulting in new evaluations of the abscissas from scratch if the accuracy of the Quadrature is to be improved.
         
-        the abscissas are the zeros of the Legendre polynomial of degree $n$.
+        The abscissas are the zeros of the Legendre polynomial of degree $n$.
         
        

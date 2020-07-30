@@ -41,11 +41,11 @@
         \begin{enumerate}
             \item draw random sample $x$ for $h(x)$
             \item draw uniform random number $u\in[0,1]$
-            \item accept $x$ if $x < \frac{p(x)}{\lambda h(x)}$, else reject $x$
+            \item accept $x$ if $u < \frac{p(x)}{\lambda h(x)}$, else reject $x$
         \end{enumerate}
     
     \subsubsection{Importance Sampling}
-        ``Bad" fitting $h(x)$ might waste a lot of evaluations. We want to draw samples $x$ from probability $w(x)$ which fits better. We compensate for the bias by nomralizing $p(x)$ by $w(x)$ and thus sample $p(x)/w(x)$.
+        ``Bad" fitting $p(x)$ might waste a lot of evaluations. We want to draw samples $x$ from probability $w(x)$ which fits better. We compensate for the bias by normalizing $p(x)$ by $w(x)$ and thus sample $p(x)/w(x)$.
         \begin{equation*}
             \langle f \rangle_p = \int_a^b f(x)\frac{p(x)}{w(x)}w(x)dx \approx \frac{1}{M}\sum_{i=1}^M f(x_i)\frac{p(x_i)}{w(x_i)}
         \end{equation*}
@@ -54,7 +54,7 @@
 \subsection{Monte Carlo}
     \textbf{Recipe:}
     \begin{enumerate}
-        \item Sample points $\Vec{x}_i$ from a uniform distribution and evalutate inegrand $f$ to get $f(\Vec{x}_i)$.
+        \item Sample points $\Vec{x}_i$ from a uniform distribution and evaluate integrand $f$ to get $f(\Vec{x}_i)$.
         
         \item Store number of samples, the sum of the values and the sum of squares
         \begin{equation*}
