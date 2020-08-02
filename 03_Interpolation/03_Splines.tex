@@ -1,36 +1,26 @@
 \subsection{Cubic Splines}
     Idea: split interval into subdomains and the construct a piecewise approximation in each subdomain. Cubic functions will lead to piecewise linear $f''$.
     
-    Data: $\{x_i,y_i\}_{i=1,\dots,N}$ Let $f_i = f(x_i)$ be a cubic function in between $x_i < x < x_{i+1}$
-    \begin{equation*}
+    Data: $\{x_i,y_i\}_{i=1,\dots,N}$ Let $f_i = f(x_i)$ be a cubic function in between $x_i < x < x_{i+1}$ with $\Delta_i = x_{i+1}-x_i$
+    \begin{gather*}
     \colorboxed{red}{
-    \begin{aligned}
-        \frac{\Delta_{i-1}}{6}f_{i-1}'' + \left(\frac{\Delta_{i-1}+\Delta_i}{3}\right)f_i'' + \frac{\Delta_i}{6}f''_{i+1} \\= \frac{y_{i+1}-y_i}{\Delta_i} - \frac{y_i-y_{i-1}}{\Delta_{i-1}}
-    \end{aligned}
-    }
-    \end{equation*}
-    where $\Delta_i = x_{i+1}-x_i$
-    
-    This can be written as:
-    \begin{equation*}
+        \begin{aligned}
+            \frac{\Delta_{i-1}}{6}f_{i-1}'' + \left(\frac{\Delta_{i-1}+\Delta_i}{3}\right)f_i'' + \frac{\Delta_i}{6}f''_{i+1} \\= \frac{y_{i+1}-y_i}{\Delta_i} - \frac{y_i-y_{i-1}}{\Delta_{i-1}}
+        \end{aligned}
+    }\\
     \colorboxed{red}{
-    \begin{aligned}
-         f_i(x) = \bigg[\frac{y_{i+1}-y_i}{\Delta_i}-\big(f''_{i+1}-f''_i\big)\frac{\Delta_i}{6}\bigg](x-x_i)\\
-        + f''_i \frac{(x_{i+1}-x)^3}{6\Delta_i}+f''_{i+1}\frac{(x-x_i)^3}{6\Delta_i} +\Big(y_i-f''_i\frac{\Delta^2_i}{6}\Big)
+        \begin{aligned}
+            f_i(x) = \bigg[\frac{y_{i+1}-y_i}{\Delta_i}-\big(f''_{i+1}-f''_i\big)\frac{\Delta_i}{6}\bigg](x-x_i)\\
+            + f''_i \frac{(x_{i+1}-x)^3}{6\Delta_i}+f''_{i+1}\frac{(x-x_i)^3}{6\Delta_i} +\Big(y_i-f''_i\frac{\Delta^2_i}{6}\Big)
      \end{aligned}
-    % \begin{aligned}
-    %     \scriptstyle{f_i(x) = f''_i \frac{(x_{i+1}-x)^3}{6\Delta_i}+f''_{i+1}\frac{(x-x_i)^3}{6\Delta_i}}\\\scriptstyle{+ \Big(\frac{y_{i+1}-y_i}{\Delta_i}-(f''_{i+1}-f''_i)\frac{\Delta_i}{6}\Big)(x-x_i)+\Big(y_i-f''_i\frac{\Delta^2_i}{6}\Big)}
-    % \end{aligned}
     }
-    \end{equation*}
+    \end{gather*}
     
     $\rightarrow N-2$ equations (eq. is not valid at the endpoints [except for periodic $f$]). 2 additional equations needed.
-   
-    
     \begin{itemize}
         \item Natural Spline: $f_1'' = f_N'' = 0$
         \item Parabolic Runout: $f_1'' = f_2''$ and $f_{N-1}'' = f_N''$
         \item Clamping: $f'(x_1) = f'(x_N) = 0$
     \end{itemize}
-    This leads to a tridiagonal matrix equation $Af=b$ where $f = [f''_1, f''_2, \dots, f''_{N-2}, f''_{N-1}]^\top$. ($f''_1, f''_{N-1}$ equation for the specific type of spline above)
+    $\rightarrow$Tridiagonal matrix equation $Af=b$ where $f = [f''_1, f''_2, \dots, f''_{N-2}, f''_{N-1}]^\top$. ($f''_1, f''_{N-1}$ equation for the specific type of spline above)
     

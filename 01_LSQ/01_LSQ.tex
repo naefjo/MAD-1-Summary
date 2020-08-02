@@ -100,17 +100,20 @@
     \end{equation*}
 
     \subsubsection{Orthonormal Case}
-        Let $\mathbf{a}_i$ be the columns of $A \in\mathbb{R}^{N\times M}$. Columns are orthogonal iff \begin{equation*}
-            \mathbf{a}_i \cdot \mathbf{a}_j = \delta_{ij} \quad 1 \leq i,j \leq M
-        \end{equation*}
+        % Let $\mathbf{a}_i$ be the columns of $A \in\mathbb{R}^{N\times M}$. Columns are orthogonal iff \begin{equation*}
+        %     \mathbf{a}_i \cdot \mathbf{a}_j = \delta_{ij} \quad 1 \leq i,j \leq M
+        % \end{equation*}
         An \textit{orthogonal Matrix} has the following properties:
         \begin{equation*}
             A^\top = A^{-1}; \qquad \|A\mathbf{u}\| = \|\mathbf{u}\|
         \end{equation*}
         LSQ simplifies to:
             $\textbf{\textit{w}}^\star = A^\top\textbf{\textit{y}}$
-        % \TODO{example?}
         
+        Rewrite $y = w_1 + w_2x$ as $y = w_1 + w_2(x-\Bar{x})$. LSQ yields
+        \begin{equation*}
+            w_1^\star = \frac{\sum y_i}{N}; \quad w_2^\star = \frac{\sum(x_i - \Bar{x})y_i}{\sum(x_i - \Bar{x})^2}
+        \end{equation*}
     \subsection{Geometric Interpretation}
         The columns of A span a M-dimensionl space. The least squares method finds the solution $\w^\star$ s.t. $A\w^\star$ is the projection of $\y$ on the column space of $A$.
         We observe that the residual $\mathbf{e} = \mathbf{y}-A\w^\star$ is perpendicular to  range($A$) and has minimal 2-norm ($\|e\|=\|\y-A\w\|$ is minimal for $\w = \w^\star$)
@@ -122,8 +125,9 @@
         $\mathbf{e}^\star\in$ left nullspace $A$
         
         $A\w = \y$ has a solution iff $\y\in$ range $A$ $\Rightarrow \mathbf{e} = 0$
+        
         \subsubsection{Projection Matrix P}
-            closest point to $\y$ is $\Vec{p} = A\w^\star = P\Vec{y}$ (P is a projection Matrix with $P = P^\top$ (symmetric), $P^2 = P$ (idemptotent)).
+            Closest point to $\y$ is $\Vec{p} = A\w^\star = P\Vec{y}$ (P is a projection Matrix with $P = P^\top$ (symmetric), $P^2 = P$ (idemptotent)).
             \begin{equation*}
                 \colorboxed{red}{
                     P = A(A^\top A)^{-1}A^\top
